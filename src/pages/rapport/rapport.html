@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Rapport</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+    <h4 style="margin-top: 2em">Séléctionner un client</h4>
+
+    <ion-list>
+        <ion-item>
+          <ion-label>Client</ion-label>
+          <ion-select disabled="{{isClientsDisabled}}" (ionChange)="onClientChange($event)" [(ngModel)]="client">
+              <ion-option value="0">Aucun élément selectionné</ion-option>
+            <ion-option *ngFor="let client of clients" value="{{client.id}}">{{client.name}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+
+      <h4 style="margin-top: 2em">Séléctionner le site d'intervention</h4>
+
+      <ion-list>
+          <ion-item>
+            <ion-label>Site</ion-label>
+            <ion-select disabled="{{isSitesDisabled}}" (ionChange)="onSiteChange($event)" [(ngModel)]="site">
+              <ion-option value="0">Aucun élément selectionné</ion-option>
+              <ion-option *ngFor="let site of sites" value="{{site.id}}">{{site.name}}</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+
+        <button ion-button *ngIf="site > 0 && site != ''" (click)="validInfos()" full>Valider la sélection</button>
+        <button ion-button *ngIf="site == 0 || site == ''"  (click)="goToCreateClient()" full>Créer une nouvelle fiche</button>
+
+</ion-content>

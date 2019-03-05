@@ -1,0 +1,71 @@
+<ion-header>
+
+    <ion-navbar>
+      <ion-title>{{pageName}}</ion-title>
+    </ion-navbar>
+  
+  </ion-header>
+
+
+<ion-content padding>
+    
+  <h4 style="margin-top: 2em">Client</h4>
+  <ion-list>
+    <ion-item>
+      <ion-label floating>Nom</ion-label>
+      <ion-input disabled="{{isClientDisabled}}" [(ngModel)]="clientName" type="text"></ion-input>
+    </ion-item>      
+  </ion-list>
+
+  <h4 *ngIf="goal != 'createClient'"  style="margin-top: 2em">Site</h4>
+  <ion-list *ngIf="goal != 'createClient'">
+    <ion-item>
+      <ion-label floating>Nom</ion-label>
+      <ion-input disabled="{{isSiteDisabled}}" [(ngModel)]="siteName" type="text"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>N° de contrat</ion-label>
+      <ion-input disabled="{{isSiteDisabled}}" [(ngModel)]="nContrat" type="text">Test</ion-input>
+    </ion-item>       
+    <ion-item>
+      <ion-label floating>Adresse</ion-label>
+      <ion-input disabled="{{isSiteDisabled}}" [(ngModel)]="adresse" type="text"></ion-input>
+    </ion-item>   
+    <ion-item>
+      <ion-label floating>Ville</ion-label>
+      <ion-input disabled="{{isSiteDisabled}}" [(ngModel)]="city" type="text"></ion-input>
+    </ion-item>   
+    <ion-item>
+      <ion-label floating>Code postal</ion-label>
+      <ion-input disabled="{{isSiteDisabled}}" [(ngModel)]="zip" type="text"></ion-input>
+    </ion-item>     
+    <ion-item>
+      <ion-label floating>Catégorie d'établissement</ion-label>
+      <ion-input disabled="{{isSiteDisabled}}" [(ngModel)]="categorie" type="text"></ion-input>
+    </ion-item> 
+    <ion-item>
+      <ion-label floating>Type d'établissement</ion-label>
+      <ion-input disabled="{{isSiteDisabled}}" [(ngModel)]="type" type="text"></ion-input>
+    </ion-item>   
+    <ion-item>
+      <ion-label floating>Nom du responsable</ion-label>
+      <ion-input disabled="{{isSiteDisabled}}" [(ngModel)]="nomResp" type="text"></ion-input>
+    </ion-item> 
+    <ion-item>
+        <ion-label floating>Fonction du responsable</ion-label>
+        <ion-input disabled="{{isSiteDisabled}}" [(ngModel)]="foncResp" type="text"></ion-input>
+      </ion-item> 
+    <ion-item>
+      <ion-label floating>Tel du responsable</ion-label>
+      <ion-input disabled="{{isSiteDisabled}}" [(ngModel)]="telResp" type="text"></ion-input>
+    </ion-item>       
+    <ion-item>
+        <ion-label floating>Email du responsable</ion-label>
+        <ion-input disabled="{{isSiteDisabled}}" [(ngModel)]="emailResp" type="text"></ion-input>
+      </ion-item>  
+  </ion-list>
+
+    <button ion-button (click)="validInfos()" full color="secondary">{{validButton}}</button>
+    <button ion-button (click)="editInfos()" full>Modifier les informations</button>
+
+</ion-content>

@@ -1,0 +1,59 @@
+<ion-header>
+
+  <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title>Mes informations</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-list *ngIf="!isLoggedIn">
+
+        <ion-item>
+          <ion-label floating>Adresse email</ion-label>
+          <ion-input [(ngModel)]="email" type="text"></ion-input>
+        </ion-item>
+      
+        <ion-item>
+          <ion-label floating>Password</ion-label>
+          <ion-input [(ngModel)]="pass" type="password"></ion-input>
+        </ion-item>
+      
+      </ion-list>
+
+      <ion-list *ngIf="isLoggedIn">
+
+          <ion-item>
+            <ion-label floating>Adresse email</ion-label>
+            <ion-input disabled="{{isDisabled}}" [(ngModel)]="email" type="text"></ion-input>
+          </ion-item>
+        
+          <ion-item>
+            <ion-label floating>Nom d'utilisateur</ion-label>
+            <ion-input disabled="{{isDisabled}}" [(ngModel)]="username" type="text"></ion-input>
+          </ion-item>
+
+          <ion-item>
+              <ion-label floating>Prénom</ion-label>
+              <ion-input disabled="{{isDisabled}}" [(ngModel)]="fname" type="text"></ion-input>
+          </ion-item>
+
+          <ion-item>
+              <ion-label floating>Nom</ion-label>
+              <ion-input disabled="{{isDisabled}}" [(ngModel)]="sname" type="text"></ion-input>
+          </ion-item>
+
+        
+        </ion-list>
+
+      <button *ngIf="!isLoggedIn"  ion-button (click)="login()" full color="secondary">Se connecter</button>
+      <button *ngIf="isLoggedIn && !isEditable" ion-button (click)="editInfos()" full>Modifier les informations</button>
+      <button *ngIf="isEditable" ion-button (click)="validInfos()" full>Valider les informations</button>
+      <button *ngIf="isLoggedIn"  ion-button (click)="disconnect()" full color="danger">Se déconnecter</button>
+
+</ion-content>
