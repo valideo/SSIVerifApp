@@ -6,6 +6,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 import { File } from '@ionic-native/file';
 import { FileOpener } from '@ionic-native/file-opener';
+import { NativeStorage } from '@ionic-native/native-storage';
 
 //Pages
 import { MyApp } from './app.component';
@@ -53,7 +54,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
    SocialSharing,
    PdfProvider,
    FileOpener,
-   File
+   File,
+   NativeStorage
   ]
 })
 export class AppModule {}

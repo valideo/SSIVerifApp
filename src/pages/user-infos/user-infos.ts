@@ -2,6 +2,7 @@ import { HomePage } from './../home/home';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { RestProvider } from '../../providers/rest/rest';
+import { NativeStorage } from '@ionic-native/native-storage';
 
 @IonicPage()
 @Component({
@@ -19,7 +20,7 @@ fname : string = "";
 sname : string = "";
 username: string = "";
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public RestProvider: RestProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public RestProvider: RestProvider, private nativeStorage: NativeStorage) {
   }
 
   ionViewDidEnter(){
@@ -52,6 +53,11 @@ username: string = "";
     this.RestProvider.apiLogin(this.email, this.pass).then(data => {
       if(data['token'] != ""){
         this.loadData();
+        this.nativeStorage.setItem('ssiUserCredentials', {email: this.email, pass: this.pass})
+        .then(
+          () => console.log('Stored item!'),
+          error => console.error('Error storing item', error)
+        );
         this.navCtrl.setRoot(HomePage);
       }
     });
