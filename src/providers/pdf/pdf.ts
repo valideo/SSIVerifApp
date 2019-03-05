@@ -66,9 +66,4 @@ export class PdfProvider {
     this.doc.circle(this.BigRectX+this.BigRectW/4*3+25, this.BigRectY+this.BigRectH-7, 5, 'S');
   }
 
-  updatePdfPreview(){
-    this.PdfB64 = this.doc.output('dataurlnewwindow');
-    console.log(this.PdfB64);
-  }
-
 }

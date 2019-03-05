@@ -74,16 +74,12 @@ export class AccessModulesPage {
       }
   }
 
- /* previewPdf(){
-    const options: DocumentViewerOptions = {
-      title: 'My PDF'
-    }
-    
-   this.document.viewDocument(this.pdfProvider.doc.output('datauristring'), 'application/pdf', options);
-   console.log(this.pdfProvider.doc.output('datauri'));
-  }*/
-
   previewPdf() {
+    if(this.plt.is('core') || this.plt.is('mobileweb')){
+
+      this.pdfProvider.doc.output("dataurlnewwindow");
+
+    }else{
       let pdfOutput = this.pdfProvider.doc.output();
       // using ArrayBuffer will allow you to put image inside PDF
       let buffer = new ArrayBuffer(pdfOutput.length);
@@ -124,4 +120,5 @@ export class AccessModulesPage {
         });
       });
     }
+  }
 }
